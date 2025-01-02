@@ -10,4 +10,4 @@ python manage.py collectstatic --noinput
 python manage.py migrate
 
 # Start the application (this will be overridden by Procfile)
-exec gunicorn backend.wsgi:application --log-file -
+exec gunicorn backend.wsgi:application --forwarded-allow-ips "*"
