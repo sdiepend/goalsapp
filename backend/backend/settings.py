@@ -102,9 +102,17 @@ USE_I18N = True
 USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATICFILES_DIRS = [
+    BASE_DIR / 'static',
+]
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+# Ensure static directory exists
+import os
+os.makedirs(STATIC_ROOT, exist_ok=True)
+os.makedirs(BASE_DIR / 'static', exist_ok=True)
 
 # Security settings
 SECURE_SSL_REDIRECT = not DEBUG
